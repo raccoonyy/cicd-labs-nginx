@@ -18,7 +18,7 @@ jobs:
      - name: Run
        env:
          SERVICE_NAME: 13-124-238-160 # 자신의 서비스 이름으로 변경합니다.
-         IMAGE_NAME: ${{ DOCKERHUB_USERNAME }}/lightsail-nginx:${{ github.sha }}
+         IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/lightsail-nginx:${{ github.sha }}
        run: |
          echo $IMAGE_NAME:$IMAGE_TAG
          docker build -t $IMAGE_NAME .
