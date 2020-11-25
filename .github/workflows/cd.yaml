@@ -5,8 +5,8 @@ on: [push]
 jobs:
   deploy:
     name: Docker Deployment
-     runs-on: ubuntu-18.04
-     steps: 
+    runs-on: ubuntu-18.04
+    steps: 
      - name: Checkout
        uses: actions/checkout@v2
      - name: Configure AWS Credentials
