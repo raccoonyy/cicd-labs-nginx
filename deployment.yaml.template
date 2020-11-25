@@ -1,7 +1,7 @@
 serviceName: '13-124-238-160' # 자신의 서비스 이름으로 바꿔주세요
 containers:
  nginx:
-   image: '{IMAGE_NAME}' # 바꿔주세요
+   image: '${IMAGE_NAME}' # 바꿔주세요
    ports:
      '80': 'HTTP'
 publicEndpoint:
