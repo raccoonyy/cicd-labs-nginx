@@ -17,13 +17,13 @@ jobs:
          aws-region: ap-northeast-2
      - name: Run
        env:
-         SERVICE_NAME: 127-0-0-1 # 자신의 서비스 이름으로 변경합니다.
+         SERVICE_NAME: 13-124-238-160 # 자신의 서비스 이름으로 변경합니다.
          IMAGE_NAME: ${{ DOCKERHUB_USERNAME }}/lightsail-nginx:${{ github.sha }}
-         run: |
-           echo $IMAGE_NAME:$IMAGE_TAG
-           docker build -t $IMAGE_NAME .
-           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-           docker push $IMAGE_NAME
-           envsubst < deployment.yaml.template > deployment.yaml 
-           aws lightsail create-container-service-deployment --service-name
-           $SERVICE_NAME --cli-input-yaml file://deployment.yaml
+       run: |
+         echo $IMAGE_NAME:$IMAGE_TAG
+         docker build -t $IMAGE_NAME .
+         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+         docker push $IMAGE_NAME
+         envsubst < deployment.yaml.template > deployment.yaml 
+         aws lightsail create-container-service-deployment --service-name
+         $SERVICE_NAME --cli-input-yaml file://deployment.yaml
